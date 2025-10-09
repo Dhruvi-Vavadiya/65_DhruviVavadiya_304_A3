@@ -5,7 +5,7 @@ ob_start();
  include('./conn.php'); 
  
  if(isset($_SESSION['unm'])){
-   header("location:Category/list.php");
+   header("location:Category_Product/list.php");
 }
     ?>
 <!DOCTYPE html>
@@ -84,7 +84,7 @@ ob_start();
                        if(!empty($_REQUEST['rme'])){
                           setcookie("user",$unm,time() + 86400);
                           }                  
-                  header("location:Category/list.php");
+                  header("location:Category_Product/list.php");
                   
            }else{
             session_destroy();

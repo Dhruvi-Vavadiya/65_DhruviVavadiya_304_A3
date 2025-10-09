@@ -3,22 +3,18 @@ ob_start();
 include('../head_tag.php'); 
 include('../conn.php');
 include('navbar.php');
-
-    if(isset($_GET['cid'])){
-        $cid=$_GET['cid'];
-        $q="select * from categories where id='$cid'";
-        $result=mysqli_query($conn,$q) or die();
-        $r=mysqli_fetch_array($result);
-    }else{
-        header("location:list.php");
-    }
+session_start();
+// print_r($_SESSION);
+if(!isset($_SESSION['unm'])){
+   header("location:../Login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Artists</title>
+    <title>Add Artists</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -26,24 +22,24 @@ include('navbar.php');
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4 mt-5">
     <form action="" method="post">
     <table  class="table table-borderless">
-        <h1 align="center">Update Category </h1>
+        <h1 align="center">Add Category </h1>
         <tr>
             <td>Category Name</td>
             <td>
-                <input  type="text" class="form-control" name="cnm" required value="<?php echo $r[1];?>">
+                <input  type="text" class="form-control" name="cnm" required >
             </td>
         </tr>
         <tr>
             <td>Category Description</td>
             <td>
-                <input  type="text" class="form-control" name="des" required value="<?php echo $r[2];?>">
+                <input  type="text" class="form-control" name="des" required >
             </td>
         </tr>
        
        
         <tr>
       
-            <td><input type="submit" name="update" value="Update" class="btn btn-primary btn-block btn-lg"></td>
+            <td><input type="submit" name="add" value="Add" class="btn btn-primary btn-block btn-lg"></td>
             
         </tr>
     </table>
@@ -55,10 +51,10 @@ include('navbar.php');
 </html>
 <?php
 
-    if(isset($_REQUEST['update'])){
+    if(isset($_REQUEST['add'])){
             $cnm=$_REQUEST['cnm'];
             $desc=$_REQUEST['des'];
-             $q="update categories set name='$cnm',description='$desc' where id='$cid'";
+             $q="insert into categories values (NULL,'$cnm','$desc')";
             // echo $q;
              if(mysqli_query($conn,$q)){
             

@@ -2,8 +2,8 @@
     session_start();
     if(isset($_SESSION['unm'])){
         session_destroy();
-         header("location:./login.php");
+        header("location:./login.php");
         }else{
-          header("location:./login.php");
+          header("location:../Category_Product/list.php");
     }
 ?>

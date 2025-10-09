@@ -5,9 +5,9 @@ ob_start();
     include('../conn.php');
     include('navbar.php');
     session_start();
- if(!isset($_SESSION['unm'])){
-   header("location:../Login.php");
-}
+//  if(!isset($_SESSION['unm'])){
+//    header("location:../Login.php");
+// }
     $q="select * from categories";
     $result=mysqli_query($conn,$q) or die("Query Failed!!!");
     if(mysqli_num_rows($result)>0){

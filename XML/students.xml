@@ -1,0 +1,12 @@
+<students>
+  <student>
+    <name>nency</name>
+    <email>nenu@gmail.com</email>
+    <password>123</password>
+  </student>
+  <student>
+    <name>Jay</name>
+    <email>jay@gmail.com</email>
+    <password>123</password>
+  </student>
+</students>
